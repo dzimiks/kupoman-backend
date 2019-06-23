@@ -53,7 +53,7 @@ public class Main {
 		String[] lastNames = new String[]{"Paunovic", "Mitic", "Milunovic", "Copic", "Radonjic", "Pavlovic", "Markovic", "Aksentijevic"};
 		String[] privileges = new String[]{Privilege.ADMINISTRATOR.toString(), Privilege.OPERATOR.toString()};
 
-		for (int i = 0; i < 100; i++) {
+		for (int i = 0; i < 10; i++) {
 			float originalPrice = getRandomFloat(200f, 700f);
 			float discountedPrice = originalPrice - getRandomFloat(10f, 150f);
 
