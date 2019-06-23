@@ -79,7 +79,7 @@ public class Main {
 					.append("name", shops[Math.abs(random.nextInt()) % shops.length]);
 
 			Document couponDocument = new Document("ID", Math.abs(random.nextLong()))
-					.append("shop", shopDocument.get("ID"))
+					.append("shop", shopDocument)
 					.append("product", products[Math.abs(random.nextInt()) % products.length])
 					.append("discountedPrice", discountedPrice)
 					.append("originalPrice", originalPrice)

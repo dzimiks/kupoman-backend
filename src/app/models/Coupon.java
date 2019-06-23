@@ -81,4 +81,17 @@ public class Coupon {
 	public void setValidTo(Date validTo) {
 		this.validTo = validTo;
 	}
+
+	@Override
+	public String toString() {
+		return "Coupon{" +
+				"ID=" + ID +
+				", shop=" + shop +
+				", product='" + product + '\'' +
+				", discountedPrice=" + discountedPrice +
+				", originalPrice=" + originalPrice +
+				", validFrom=" + validFrom +
+				", validTo=" + validTo +
+				'}';
+	}
 }
