@@ -85,7 +85,14 @@ $(document).ready(() => {
     };
 
     $.get('api/shops', data => {
-        for (let d of data) {
+        // Removes duplicate names from object array.
+        let unique = data.filter((elem, index, self) =>
+            index === self.findIndex((t) => (
+                t.name === elem.name
+            ))
+        );
+
+        for (let d of unique) {
             $('#shop-list').append(new Option(d.name, d.id));
         }
     });
