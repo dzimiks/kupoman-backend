@@ -19,6 +19,15 @@ public class Main {
 
 	public static void main(String[] args) {
 		MongoConnection mongoConnection = new MongoConnection();
+
+		// TODO: Generates the database.
+		generateDatabase(mongoConnection);
+
+		// TODO: Drops the database.
+//		dropDatabase(mongoConnection.getMongoDatabase());
+	}
+
+	private static void generateDatabase(MongoConnection mongoConnection) {
 		Random random = new Random();
 
 		// TODO: Collections.
@@ -89,9 +98,6 @@ public class Main {
 			mongoConnection.insertDocument(mongoCollectionShops, shopDocument);
 			mongoConnection.insertDocument(mongoCollectionUsers, userDocument);
 		}
-
-		// TODO: Drops the database.
-//		dropDatabase(mongoConnection.getMongoDatabase());
 	}
 
 	private static float getRandomFloat(float min, float max) {
