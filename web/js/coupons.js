@@ -64,10 +64,22 @@ $(document).ready(() => {
             tr.appendChild(tdbt);
         },
 
+        formToJSON: elements => [].reduce.call(elements, (data, element) => {
+            data[element.name] = element.value;
+            return data;
+        }, {}),
+
         addCoupon: () => {
-            $.post('api/coupons', $('#add-coupon-form').serialize(), data => {
-                result.addRow(data);
-                $('#add-coupon-form')[0].reset();
+            $.ajax({
+                type: 'POST',
+                url: 'api/coupons',
+                dataType: 'json',
+                contentType: 'application/json',
+                data: result.formToJSON(form.elements),
+                success: data => {
+                    result.addRow(data);
+                    $('#add-coupon-form')[0].reset();
+                }
             });
         },
 

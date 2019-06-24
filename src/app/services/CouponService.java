@@ -67,6 +67,7 @@ public class CouponService {
 	}
 
 	public Coupon addCoupon(Coupon coupon) {
+		System.out.println(coupon);
 		Document shopDocument = new Document("ID", coupon.getShop().getID())
 				.append("name", coupon.getShop().getName());
 
