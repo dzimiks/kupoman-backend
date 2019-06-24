@@ -5,6 +5,7 @@ import app.services.ShopService;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
@@ -26,5 +27,12 @@ public class ShopEndpoint {
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Shop> get() {
 		return shopService.getShops();
+	}
+
+	@GET
+	@Path("/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Shop getByID(@PathParam("id") String id) {
+		return shopService.getShopByID(id);
 	}
 }

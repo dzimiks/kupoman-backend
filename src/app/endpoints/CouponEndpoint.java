@@ -27,18 +27,18 @@ public class CouponEndpoint {
 		return couponService.getCoupons();
 	}
 
-//	@POST
-//	@Consumes(MediaType.APPLICATION_JSON)
-//	@Produces(MediaType.APPLICATION_JSON)
-//	public Coupon add(Coupon coupon) {
-//		return couponService.addCoupon(coupon);
-//	}
-//
-//	@DELETE
-//	@Path("{id}")
-//	@Consumes(MediaType.APPLICATION_JSON)
-//	public Response delete(@PathParam("id") Integer id) {
-//		couponService.deleteCoupon(id);
-//		return Response.ok().build();
-//	}
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Coupon add(Coupon coupon) {
+		return couponService.addCoupon(coupon);
+	}
+
+	@DELETE
+	@Path("{id}")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response delete(@PathParam("id") long id) {
+		couponService.deleteCoupon(id);
+		return Response.ok().build();
+	}
 }

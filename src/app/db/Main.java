@@ -20,11 +20,11 @@ public class Main {
 	public static void main(String[] args) {
 		MongoConnection mongoConnection = new MongoConnection();
 
+		// TODO: Drops the database.
+		dropDatabase(mongoConnection.getMongoDatabase());
+
 		// TODO: Generates the database.
 		generateDatabase(mongoConnection);
-
-		// TODO: Drops the database.
-//		dropDatabase(mongoConnection.getMongoDatabase());
 	}
 
 	private static void generateDatabase(MongoConnection mongoConnection) {
@@ -35,19 +35,40 @@ public class Main {
 		MongoCollection<Document> mongoCollectionShops = mongoConnection.getMongoCollectionShops();
 		MongoCollection<Document> mongoCollectionUsers = mongoConnection.getMongoCollectionUsers();
 
-		String[] shops = new String[]{"Kafeterija", "KFC", "Nivea", "Gigatron", "Win Win", "Kupoman", "Kupujem Prodajem"};
+		String[] shops = new String[]{
+				"Kafeterija",
+				"KFC",
+				"Nivea",
+				"Gigatron",
+				"Win Win",
+				"Kupoman",
+				"Kupujem Prodajem",
+				"BOSCH",
+				"Maxi",
+				"MC Donalds",
+				"Idea",
+				"Tepsija",
+				"RAF",
+				"Brankow",
+				"Coffee Dream",
+				"Hotel Moskva"
+		};
 		String[] products = new String[]{
 				"Bowl",
 				"Shovel",
 				"Milk",
 				"Door",
-				"Shoe lace",
+				"Shoes",
 				"Hair brush",
 				"Camera",
 				"Speakers",
 				"Bread",
 				"Perfume",
-				"Produzeni s mlekom"
+				"Produzeni s mlekom",
+				"Macbook Pro",
+				"Tequila",
+				"Salt",
+				"Banana"
 		};
 		String[] firstNames = new String[]{"Vanja", "Milan", "Milos", "Branko", "Anastasija", "Milica", "Zivojin", "Nikola"};
 		String[] lastNames = new String[]{"Paunovic", "Mitic", "Milunovic", "Copic", "Radonjic", "Pavlovic", "Markovic", "Aksentijevic"};
@@ -63,6 +84,8 @@ public class Main {
 
 			String randomUsername = Long.toHexString(Double.doubleToLongBits(Math.random()));
 			String randomPassword = Long.toHexString(Double.doubleToLongBits(Math.random()));
+			String shopName = shops[Math.abs(random.nextInt()) % shops.length];
+			String shopID = shopName.replaceAll("\\s*", "-") + "-ID";
 
 			// TODO: Valid From.
 			Calendar calendarValidFrom = Calendar.getInstance();
@@ -75,8 +98,8 @@ public class Main {
 			Date validTo = addDays(validFrom, randomDay);
 
 			// TODO: Documents.
-			Document shopDocument = new Document("ID", UUID.randomUUID().toString())
-					.append("name", shops[Math.abs(random.nextInt()) % shops.length]);
+			Document shopDocument = new Document("ID", shopID)
+					.append("name", shopName);
 
 			Document couponDocument = new Document("ID", Math.abs(random.nextLong()))
 					.append("shop", shopDocument)
