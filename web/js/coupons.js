@@ -97,7 +97,11 @@ $(document).ready(() => {
                 for (let d of data) {
                     result.addRow(d);
                 }
-            });
+
+                $('#rest-table').DataTable({
+                    responsive: true,
+                });
+            }, 'json');
         }
     };
 
