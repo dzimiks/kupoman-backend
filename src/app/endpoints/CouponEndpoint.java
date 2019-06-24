@@ -35,7 +35,7 @@ public class CouponEndpoint {
 	}
 
 	@DELETE
-	@Path("{id}")
+	@Path("/{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response delete(@PathParam("id") long id) {
 		couponService.deleteCoupon(id);

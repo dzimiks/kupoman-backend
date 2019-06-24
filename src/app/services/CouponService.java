@@ -88,6 +88,11 @@ public class CouponService {
 		System.out.println("Successfully deleted document with ID " + id);
 	}
 
+	public void deleteCouponsByShopID(String id) {
+		mongoCollection.deleteMany(Filters.eq("shop.ID", id));
+		System.out.println("Successfully deleted documents with ID " + id);
+	}
+
 	public List<Coupon> getCouponsByShopID(String id) {
 		List<Coupon> coupons = new ArrayList<>();
 		MongoCursor<Document> shopCursor = mongoCollection.find(Filters.eq("shop.ID", id)).iterator();

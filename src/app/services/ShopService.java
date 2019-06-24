@@ -54,4 +54,10 @@ public class ShopService {
 
 		return shop;
 	}
+
+	public void deleteShop(String id) {
+		couponService.deleteCouponsByShopID(id);
+		mongoCollection.deleteOne(Filters.eq("ID", id));
+		System.out.println("Successfully deleted document with ID " + id);
+	}
 }

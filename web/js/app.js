@@ -25,7 +25,7 @@ $(document).ready(() => {
 
                 if (cnt === 1) {
                     let a = document.createElement('a');
-                    a.setAttribute('href', '/api/shops/' + data.shop.ID);
+                    a.setAttribute('href', '/shop.html?id=' + data.shop.ID);
                     a.appendChild(document.createTextNode(i));
                     td.appendChild(a);
                 } else {
@@ -80,7 +80,7 @@ $(document).ready(() => {
             return false;
         },
 
-        fillForm: () => {
+        fillTable: () => {
             $.get('api/coupons', data => {
                 for (let d of data) {
                     result.addRow(d);
@@ -102,6 +102,6 @@ $(document).ready(() => {
         }
     });
 
-    result.fillForm();
+    result.fillTable();
     form.addEventListener('submit', result.submitForm);
 });

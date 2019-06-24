@@ -3,11 +3,9 @@ package app.endpoints;
 import app.models.Shop;
 import app.services.ShopService;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.util.List;
 
 /**
@@ -34,5 +32,13 @@ public class ShopEndpoint {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Shop getByID(@PathParam("id") String id) {
 		return shopService.getShopByID(id);
+	}
+
+	@DELETE
+	@Path("/{id}")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response delete(@PathParam("id") String id) {
+		shopService.deleteShop(id);
+		return Response.ok().build();
 	}
 }
